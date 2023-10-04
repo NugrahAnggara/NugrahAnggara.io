@@ -1,0 +1,255 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-family: system-ui,sans-serif;
+    font-size: 14px;
+    color: #2b2a2a;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper{
+    width: min(1200,100%);
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-color: #fafafa;
+}
+
+#header{
+    width: 100%;
+    /* width: min(1200,100%); */
+    height: 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    background-image: linear-gradient(to right,#125b07,#208511);
+    box-shadow: 0px 0px 10px -4px #000;
+    color: #fff;
+    z-index: 999;
+}
+
+#brand{
+    height: 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 5px;
+    align-items: center;
+}
+
+#brand .img{
+    width: 40px;
+    height: 40px;
+    background-image: url("logo.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#brand .brand-text{
+    line-height: 1;
+}
+
+#brand .brand-big{
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2.8px;
+}
+
+#brand .brand-small{
+    font-size: 0.8rem;
+}
+
+#menu{
+    height: 50px;
+}
+
+#menu ul{
+    width: 40%;
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#menu ul>li{
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+#menu ul>li:hover{
+    filter: drop-shadow(0px 0px 5px #000);
+}
+
+
+
+#body{
+    margin-top: 50px;
+    padding: 15px;
+    overflow-x: hidden;
+}
+
+#footer{
+    background-color: #111702;
+    color: #eee;
+    font-weight: lighter;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+
+.grid-3{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr)); */
+}
+
+.grid-3 > div{
+    padding: 15px;
+    flex: 1;
+}
+
+.grid-title{
+    font-weight: bold;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 5px;
+}
+
+#credits{
+    padding: 15px;
+    text-align: center;
+    background-color: #000;
+}
+
+.menu-toogle{
+    display: none;
+    flex-direction: column;
+    height: 15px;
+    justify-content: space-between;
+    position: relative;
+    right: 20px;
+}
+
+.menu-toogle input{
+    position: absolute;
+    width: 40px;
+    height: 28px;
+    opacity: 0.8;
+    left: -10px;
+    top: -10px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu-toogle span{
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: #fff;
+    justify-content: space-between;
+    transition: all 0.5s;
+}
+
+.menu-toogle span:nth-child(2){
+    transform-origin: 0 0;
+}
+
+.menu-toogle span:nth-child(4){
+    transform-origin: 0 0;
+}
+
+
+.menu-toogle input:checked ~ span:nth-child(2){
+    background-color: #fff;
+    transform: rotate(45deg) translate(-1px,-1px);
+}
+
+.menu-toogle input:checked ~ span:nth-child(4){
+    background-color: #fff;
+    transform: rotate(-45deg) translate(-2px,-0px);
+}
+
+.menu-toogle input:checked ~ span:nth-child(3){
+    opacity: 0;
+    transform: scale(0);
+}
+
+
+.content p{
+    text-align: justify;
+}
+
+
+/* responsive website */
+@media screen and (max-width:768px){
+    #menu ul{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:608px){
+    #menu{
+        position: absolute;
+        height: 100vh;
+        right: 0;
+        background-image: linear-gradient(to right,#125b07,#208511);
+        top: 50px;
+        padding: 30px;
+        z-index: -1;
+        transform: translateX(100%);
+        transition: all 1s;
+        opacity: 0;
+    }
+
+    #menu ul{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    #menu li:hover{
+        filter: drop-shadow(0px 0px 5px #000);
+    }
+
+    #menu.slide{
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .menu-toogle{
+        display: flex;
+    }
+
+    #footer{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    
+}
+
+@media screen and(widht <= 397){
+    .grid-3{
+        width: 100%;
+    }
+}
